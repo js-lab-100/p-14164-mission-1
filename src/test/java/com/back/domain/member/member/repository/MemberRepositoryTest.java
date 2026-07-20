@@ -1,5 +1,6 @@
 package com.back.domain.member.member.repository;
 
+import com.back.domain.member.member.entity.Member;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,5 +23,15 @@ class MemberRepositoryTest {
         long count = memberRepository.qCount();
 
         assertThat(count).isEqualTo(5L);
+    }
+
+    @Test
+    @DisplayName("findQByUsername")
+    void t2() {
+        String username = "user1";
+
+        Member memberUser1 = memberRepository.findQByUsername(username).get();
+
+        assertThat(memberUser1.getUsername()).isEqualTo(username);
     }
 }
